@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<!--
+  Before-and-After Transparency Worksheet
+  Version 1.0 — July 2026
+  Canonical source: https://transparencyovertropes.github.io/before-after-worksheet/
+
+  Dedicated to the public domain under CC0 1.0. You may adapt this freely.
+  If you do, please keep this block and add your own line below it, so a
+  reader can trace any copy back to where it came from.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Before-and-After Transparency Worksheet</title>
+<meta name="version" content="1.0">
+<meta name="dcterms.modified" content="2026-07">
+<link rel="canonical" href="https://transparencyovertropes.github.io/before-after-worksheet/">
+<meta name="description" content="A plain-language worksheet for showing how decision-making authority and funding change. Fill it in, save it to your own device, print it, share it.">
+<style>
+:root{
+  --primary:#23405C;
+  --link:#1B5E82;
+  --accent:#2E7D8F;
+  --amber:#E8C547;
+  --text:#1A1F26;
+  --muted:#55606B;
+  --tint:#F0F3F6;
+  --highlight:#DCE6EE;
+  --border:#B6BFC9;
+  --field:#767E88;
+  --focus:#23405C;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:system-ui,Inter,Arial,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  color:var(--text);
+  background:#fff;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+a{color:var(--link)}
+a:hover{text-decoration:none}
+
+/* Skip link */
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--primary);color:#fff;padding:14px 18px;
+  border-radius:0 0 8px 0;font-weight:700;text-decoration:none;
+}
+.skip:focus{left:0}
+
+/* Focus */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
+textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{
+  outline:2px solid var(--focus);
+  outline-offset:3px;
+  border-radius:3px;
+}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
+/* Header */
+header.site{background:var(--primary);color:#fff;padding:20px 0}
+header.site .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+header.site .tagline{font-size:.95rem;opacity:.92}
+header.site .brandtext{font-weight:700;letter-spacing:.02em}
+
+main{display:block;padding:8px 0 40px}
+main:focus{outline:none}
+
+h1{font-size:1.9rem;line-height:1.25;color:var(--primary);margin:28px 0 8px}
+h2{font-size:1.4rem;line-height:1.3;color:var(--primary);margin:38px 0 6px;padding-bottom:6px;border-bottom:3px solid var(--highlight)}
+h3{font-size:1.1rem;color:var(--primary);margin:22px 0 6px}
+.lede{font-size:1.08rem;color:var(--text);max-width:70ch}
+.muted{color:var(--muted)}
+.small{font-size:.92rem}
+
+.card{background:var(--tint);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:18px 0}
+.card h3{margin-top:0}
+.callout{background:var(--highlight);border-left:6px solid var(--primary);border-radius:6px;padding:14px 18px;margin:18px 0}
+.callout p:last-child{margin-bottom:0}
+.callout p:first-child{margin-top:0}
+
+/* Step numbers */
+ol.steps{padding-left:1.2em}
+ol.steps li{margin-bottom:8px}
+
+/* Tables */
+.tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:900px;font-size:.95rem}
+caption{text-align:left;padding:12px 14px;font-weight:700;color:var(--primary);background:var(--tint);border-bottom:1px solid var(--border)}
+th,td{border-bottom:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+thead th{background:var(--tint);color:var(--primary);font-size:.9rem;border-bottom:2px solid var(--border)}
+tbody tr:nth-child(even){background:#fbfdfe}
+tfoot td,tfoot th{background:var(--tint);font-weight:700;border-top:2px solid var(--border)}
+td.num,th.num{text-align:right}
+
+/* Inputs */
+input[type=text],input[type=number],select,textarea{
+  font:inherit;font-size:.95rem;color:var(--text);
+  width:100%;min-height:44px;padding:8px 10px;
+  border:1px solid var(--field);border-radius:6px;background:#fff;
+}
+textarea{min-height:88px;line-height:1.5;resize:vertical}
+select{min-width:150px}
+input::placeholder,textarea::placeholder{color:#7d8b99}
+.auto{
+  display:inline-block;min-height:44px;padding:10px 8px;
+  font-weight:600;color:var(--primary);
+}
+.auto.flat{color:var(--muted);font-weight:400}
+
+.printval{display:none}
+.qblock{margin:18px 0}
+.qblock label{display:block;font-weight:700;color:var(--primary);margin-bottom:6px}
+.qblock .hint{display:block;font-weight:400;color:var(--muted);font-size:.92rem;margin-bottom:6px}
+
+.badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.85rem;font-weight:700;background:var(--highlight);color:var(--primary)}
+
+/* Buttons */
+button{
+  font:inherit;font-weight:700;cursor:pointer;
+  min-height:44px;min-width:44px;padding:10px 16px;
+  border-radius:8px;border:2px solid var(--primary);
+  background:var(--primary);color:#fff;
+}
+button.ghost{background:#fff;color:var(--primary)}
+button:hover{filter:brightness(1.08)}
+.rowbtns{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 4px}
+
+/* Floating group */
+.floaters{
+  position:fixed;right:18px;bottom:18px;z-index:60;
+  display:flex;flex-direction:column;gap:10px;
+}
+.floaters button{
+  width:auto;min-width:120px;box-shadow:0 2px 10px rgba(16,71,91,.28);
+  display:flex;align-items:center;gap:8px;justify-content:flex-start;
+}
+.floaters button.clear{background:var(--amber);color:var(--text);border-color:var(--primary)}
+.floaters button:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+
+details{border:1px solid var(--border);border-radius:10px;padding:0;margin:16px 0;background:#fff}
+details summary{
+  cursor:pointer;padding:14px 18px;min-height:44px;
+  font-weight:700;color:var(--primary);list-style-position:inside;
+}
+details[open] summary{border-bottom:1px solid var(--border);background:var(--tint);border-radius:9px 9px 0 0}
+details .inner{padding:4px 18px 18px}
+
+ol.areas{list-style:none;padding-left:0;margin:14px 0}
+ol.areas > li{margin-bottom:14px}
+ol.areas ul{margin:6px 0 0;padding-left:1.2em}
+ol.areas ul li{margin-bottom:3px;font-size:.96rem}
+ul.refs{padding-left:1.2em}
+ul.refs li{margin-bottom:12px;font-size:.95rem}
+dl.gloss dt{font-weight:700;color:var(--primary);margin-top:12px}
+dl.gloss dd{margin:2px 0 0;padding-left:0}
+
+footer.site{background:var(--tint);border-top:3px solid var(--primary);padding:28px 0;margin-top:40px}
+footer.site .ftitle{font-size:1.05rem;color:var(--primary);margin:0 0 10px;border:0;padding:0}
+footer.site p{margin:6px 0;font-size:.92rem;color:var(--muted);max-width:80ch}
+footer.site .copy{color:var(--text);font-weight:700;margin-top:18px}
+footer.site a{color:var(--link)}
+a.canon[href*="REPLACE-WITH-YOUR-URL"]{background:#FFE8A3;outline:2px dashed #A8730B;outline-offset:2px;color:#5A3B00}
+a.canon[href*="REPLACE-WITH-YOUR-URL"]::after{content:" \2190 replace this before publishing";font-weight:700;color:#5A3B00}
+
+@media (max-width:640px){
+  body{font-size:16px}
+  h1{font-size:1.55rem}
+  .floaters{right:10px;bottom:10px}
+  .floaters button{min-width:44px;padding:10px 12px}
+  .floaters button .lbl{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+}
+
+@media print{
+  @page{size:landscape;margin:12mm}
+  .floaters,.skip,.rowbtns,.noprint{display:none !important}
+  body{font-size:11pt;color:#000}
+  header.site{background:#fff;color:#000;border-bottom:2px solid #000}
+  h1,h2,h3{color:#000}
+  .tablewrap{overflow:visible;border:1px solid #000}
+  table{min-width:0;font-size:9.5pt}
+  thead th{background:#eee}
+  input,select,textarea{border:1px solid #000;min-height:0;padding:3px 4px}
+  textarea{height:auto}
+  .printval{display:block;white-space:pre-wrap;overflow-wrap:anywhere;padding:2px 0}
+  .hasval > input,.hasval > select,.hasval > textarea{display:none}
+  details{border:1px solid #000}
+  details summary{display:none}
+  tr,td,th,.card,.callout{page-break-inside:avoid}
+  footer.site{border-top:2px solid #000;background:#fff}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+<div class="sr-only" id="live" aria-live="polite" role="status"></div>
+
+<header class="site">
+  <div class="wrap">
+    <span class="brandtext">Before-and-After Transparency Worksheet</span>
+    <span class="tagline">A free, open worksheet for showing what is changing</span>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+<div class="wrap">
+
+  <h1>Before-and-After Transparency Worksheet</h1>
+  <p class="lede">When someone says authority or money is “moving,” this worksheet asks the two questions that usually go unanswered: <strong>authority over what, exactly?</strong> and <strong>what happens to the dollars?</strong></p>
+  <p class="lede">Fill it in for any change you are trying to understand. It does not tell you whether a change is good or bad. It just makes the change visible, side by side, so people can see it and talk about it.</p>
+
+  <div class="callout">
+    <p><strong>Your answers stay on your device.</strong> Nothing you type is sent anywhere. There is no tracking and no account. If you use the Save button, your work is stored in this browser only. Clearing your browser data will erase it, so print or export anything you want to keep.</p>
+  </div>
+
+  <h2>How to use this worksheet</h2>
+  <ol class="steps">
+    <li><strong>Pick one change to study.</strong> One program, one policy, one budget line. Do not try to cover everything at once.</li>
+    <li><strong>Fill in Part 1</strong> — who made the decisions before, and who makes them after.</li>
+    <li><strong>Fill in Part 2</strong> — what the dollars were, and what they will be.</li>
+    <li><strong>Read Part 3.</strong> It adds up your answers for you.</li>
+    <li><strong>Answer Part 4</strong> in plain words, including the honest list of what nobody knows yet.</li>
+    <li><strong>Write down your sources.</strong> Every claim needs a “where I learned this.” That is what makes it transparency instead of opinion.</li>
+  </ol>
+
+  <div class="card">
+    <h3>One rule that keeps this honest</h3>
+    <p>If you cannot name a source for a “before” or an “after,” do not guess. Choose <strong>Not yet decided or unclear</strong>. A worksheet full of honest blanks is far more useful — and far more credible — than one full of confident guesses.</p>
+  </div>
+
+  <!-- ============ PART 1 ============ -->
+  <h2>Part 1. Who makes the decisions?</h2>
+
+  <p>“Authority” is not one thing. It is several different jobs, and they can move in different directions at the same time. Break the decision apart before you judge it.</p>
+
+  <div class="card">
+    <h3>The four jobs hiding inside the word “authority”</h3>
+    <p>Researchers who study who-decides-what have found that authority breaks into four jobs. Someone has to set the direction. Someone has to build the organization that will do the work. Someone has to run and check the work. And someone has to actually do it. This worksheet uses those four jobs, rewritten for public services like schools and health care.</p>
+
+    <ol class="areas" role="list">
+      <li>
+        <strong>A. Setting the overall direction</strong> — what are we trying to do, and who is it for?
+        <ul>
+          <li>Who decides the goals, and what counts as success?</li>
+          <li>Who decides who is covered and who is eligible?</li>
+          <li>Who decides what is included and what is left out?</li>
+        </ul>
+      </li>
+      <li>
+        <strong>B. Building the organization and its supports</strong> — who is set up to do the work?
+        <ul>
+          <li>Who decides which agency or office runs it?</li>
+          <li>Who decides on staffing, and who can move or remove people?</li>
+          <li>Who decides what supports exist — data systems, training, help lines, ways to file a complaint?</li>
+        </ul>
+      </li>
+      <li>
+        <strong>C. Running the work and checking it</strong> — how is it done, and who watches?
+        <ul>
+          <li>Who writes and changes the rules and procedures?</li>
+          <li>Who tracks progress?</li>
+          <li>Who checks quality and enforces the rules?</li>
+          <li>Who decides what gets reported to the public?</li>
+        </ul>
+      </li>
+      <li>
+        <strong>D. Doing the work</strong> — who carries it out, day to day?
+        <ul>
+          <li>Who designs the actual programs and services?</li>
+          <li>Who delivers them to students, patients, and families?</li>
+          <li>Who decides how the money gets spent day to day?</li>
+        </ul>
+      </li>
+    </ol>
+
+    <p class="small muted">Adapted from Hackman’s authority matrix and from Moe and colleagues’ (2021) study of team autonomy, which used those same four areas to sort out who really held authority. Full citations are at the end of this worksheet.</p>
+    <p class="small muted">These four jobs come apart in practice. One office can keep job A while a different office takes over job D. On paper that can look like “nothing changed.” In daily life it can change a great deal.</p>
+  </div>
+
+  <div class="callout">
+    <p><strong>The four jobs stack.</strong> They are not a flat list — they build on each other. Whoever sets the direction (A) puts limits on whoever builds the organization (B), who puts limits on whoever runs the work (C), who puts limits on whoever does it (D).</p>
+    <p>That is why the order matters. Gaining job D and job C is real, and it is not the same as gaining job A. A group can be handed a great deal of day-to-day freedom while someone else still decides the goals, who is covered, and what counts as success. Both of those things can be described as “more authority.” They are not the same amount.</p>
+  </div>
+
+  <div class="card">
+    <h3>Four rungs on the ladder</h3>
+    <p>Counting up from the bottom, how far a group has climbed has a name:</p>
+    <ul>
+      <li><strong>Carrying out only</strong> — the group does the work (D). Everything else is decided elsewhere.</li>
+      <li><strong>Self-managing</strong> — the group does the work and runs and checks it (D and C).</li>
+      <li><strong>Self-designing</strong> — the group also shapes the organization and its supports (D, C, and B).</li>
+      <li><strong>Self-governing</strong> — the group also sets the direction (all four).</li>
+    </ul>
+    <p class="small muted">Part 3 works out these rungs for you, before and after, from what you enter in the table below. If the answers do not stack neatly — say, a group sets the direction but does not run the work — the worksheet will say so rather than force it onto a rung.</p>
+  </div>
+
+  <div class="card">
+    <h3>Where does money fit?</h3>
+    <p>Money runs through all four jobs. <em>How much</em> and <em>for what purpose</em> is direction (A). <em>Who processes it</em> is organization (B). <em>What it can be spent on</em> is rules (C). <em>How it is spent day to day</em> is doing the work (D).</p>
+    <p>So keep the dollar amounts in Part 2 and the control question here in Part 1. When you find that an amount held steady but the strings loosened, that is a change in job A or C showing up in Part 2 — worth naming in both places.</p>
+  </div>
+
+  <div class="callout">
+    <p><strong>Watch for three directions, not two.</strong> A decision can move <em>down</em> (federal to state to local), <em>up</em> (local or state to federal), or <em>sideways</em> (from one federal office to a different federal office). A sideways move is still a real change — but it is not the same as sending something to the states, and the two often get described with the same words.</p>
+  </div>
+
+  <div class="tablewrap">
+  <table id="t-auth">
+    <caption>Table 1. Decision-making authority, before and after</caption>
+    <thead>
+      <tr>
+        <th scope="col" style="min-width:180px">Decision area</th>
+        <th scope="col" class="num" style="min-width:90px">How important? (%)</th>
+        <th scope="col" style="min-width:180px">Before: who decided?</th>
+        <th scope="col" style="min-width:180px">After: who decides?</th>
+        <th scope="col" style="min-width:170px">What moved</th>
+        <th scope="col" style="min-width:170px">Where I learned this</th>
+      </tr>
+    </thead>
+    <tbody id="authbody"></tbody>
+    <tfoot>
+      <tr>
+        <th scope="row">Total</th>
+        <td class="num"><span class="auto" id="authWeightTotal">0%</span></td>
+        <td colspan="2" class="small muted" id="authWeightNote">Aim for 100%.</td>
+        <td colspan="2"></td>
+      </tr>
+    </tfoot>
+  </table>
+  </div>
+  <div class="rowbtns noprint">
+    <button type="button" class="ghost" id="addAuth">+ Add a decision area</button>
+  </div>
+  <p class="small muted">Rows A through D are the four jobs above; keep them in place so Part 3 can work out the rungs. You can rename them and add your own rows underneath — added rows count toward the totals but not toward the ladder. The “How important?” column is your own judgment about how much each decision area matters. Two reasonable people can weight these differently, and that disagreement is worth showing rather than hiding. Nothing multiplies these weights into an overall score — they sit next to the rows they describe, where a reader can see them and argue with them.</p>
+
+  <h3>Decision-making summary</h3>
+  <div class="qblock">
+    <label for="a-more">In your own words, what moved closer to states or local districts?</label>
+    <textarea id="a-more" data-save placeholder="Example: which programs a district can move money between."></textarea>
+  </div>
+  <div class="qblock">
+    <label for="a-side">What moved to a different federal office, but stayed federal?</label>
+    <textarea id="a-side" data-save placeholder="Example: day-to-day grant processing moved to another agency while the rules stayed where they were."></textarea>
+  </div>
+  <div class="qblock">
+    <label for="a-same">What stayed exactly where it was?</label>
+    <textarea id="a-same" data-save></textarea>
+  </div>
+
+  <!-- ============ PART 2 ============ -->
+  <h2>Part 2. What happens to the money?</h2>
+
+  <p>Dollars are only half the story. A funding line can stay at the same number while the <strong>rules attached to it</strong> change completely — and that changes who really controls it. Track both.</p>
+
+  <div class="card">
+    <h3>Two questions for every dollar</h3>
+    <p><strong>1. How much?</strong> The amount before and the amount after.</p>
+    <p><strong>2. How tightly is it tied?</strong> Money can arrive with a narrow required purpose, with some flexibility, or as a flexible pot the receiver can spend across many purposes. Loosening the strings is a real transfer of control even when the dollar amount does not move at all.</p>
+  </div>
+
+  <div class="tablewrap">
+  <table id="t-fund">
+    <caption>Table 2. Funding, before and after</caption>
+    <thead>
+      <tr>
+        <th scope="col" style="min-width:170px">Funding area</th>
+        <th scope="col" class="num" style="min-width:130px">Before: dollars</th>
+        <th scope="col" class="num" style="min-width:130px">After: dollars</th>
+        <th scope="col" class="num" style="min-width:120px">Dollar change</th>
+        <th scope="col" class="num" style="min-width:100px">Percent change</th>
+        <th scope="col" style="min-width:160px">Strings before</th>
+        <th scope="col" style="min-width:160px">Strings after</th>
+        <th scope="col" style="min-width:160px">Where I learned this</th>
+      </tr>
+    </thead>
+    <tbody id="fundbody"></tbody>
+    <tfoot>
+      <tr>
+        <th scope="row">Total</th>
+        <td class="num"><span class="auto" id="fundBeforeTotal">$0</span></td>
+        <td class="num"><span class="auto" id="fundAfterTotal">$0</span></td>
+        <td class="num"><span class="auto" id="fundDollarTotal">$0</span></td>
+        <td class="num"><span class="auto" id="fundPctTotal">—</span></td>
+        <td colspan="3"></td>
+      </tr>
+    </tfoot>
+  </table>
+  </div>
+  <div class="rowbtns noprint">
+    <button type="button" class="ghost" id="addFund">+ Add a funding area</button>
+  </div>
+  <p class="small muted">Enter whole dollars without commas or symbols. Use the same time period for “before” and “after” — one year compared to one year, not one year compared to four.</p>
+
+  <h3>Funding summary</h3>
+  <div class="qblock">
+    <label for="f-up">What is going up?</label>
+    <textarea id="f-up" data-save></textarea>
+  </div>
+  <div class="qblock">
+    <label for="f-down">What is going down?</label>
+    <textarea id="f-down" data-save></textarea>
+  </div>
+  <div class="qblock">
+    <label for="f-strings">Where did the amount stay the same but the rules change?
+      <span class="hint">This is the change people miss most often.</span>
+    </label>
+    <textarea id="f-strings" data-save></textarea>
+  </div>
+
+  <!-- ============ PART 3 ============ -->
+  <h2>Part 3. What it adds up to</h2>
+
+  <p>This section fills itself in from what you entered above. If something here looks wrong, the fix is in Part 1 or Part 2.</p>
+
+  <div class="card">
+    <h3>Change snapshot</h3>
+    <p>Decision areas that moved toward states or local districts: <span class="badge" id="s-down">0</span></p>
+    <p>Decision areas that moved sideways to a different federal office: <span class="badge" id="s-side">0</span></p>
+    <p>Decision areas that moved toward the federal level: <span class="badge" id="s-up">0</span></p>
+    <p>Decision areas with no change: <span class="badge" id="s-none">0</span></p>
+    <p>Decision areas still unclear or undecided: <span class="badge" id="s-unclear">0</span></p>
+    <p>Total dollar change: <span class="badge" id="s-dollars">$0</span> &nbsp; Overall percent change: <span class="badge" id="s-pct">—</span></p>
+  </div>
+
+  <div class="card">
+    <h3>How far up the ladder?</h3>
+    <div class="qblock">
+      <label for="ladderFor">Work this out for:</label>
+      <select id="ladderFor" data-save style="max-width:340px">
+        <option value="statelocal">States and local districts together</option>
+        <option value="state">State government only</option>
+        <option value="local">School districts (local) only</option>
+      </select>
+    </div>
+    <p><strong>Before:</strong> <span class="badge" id="ladderBefore">—</span></p>
+    <p><strong>After:</strong> <span class="badge" id="ladderAfter">—</span></p>
+    <p id="ladderNote" class="small muted">Fill in the Before and After columns for rows A through D to see this.</p>
+    <p class="small muted">This uses the four rungs described in Part 1. It reads only rows A through D, and only the “who decides” columns — not the weights.</p>
+  </div>
+
+  <div class="callout">
+    <p><strong>There is no overall score here, on purpose.</strong> It would be easy to multiply the weights by the distance each decision moved and produce one number. That number would look authoritative and would hide everything that matters: which jobs moved, which direction, who now decides, and what is still unknown.</p>
+    <p>Collapsing a change into a single figure is the very thing this worksheet exists to undo. Report the rows.</p>
+  </div>
+
+  <!-- ============ PART 4 ============ -->
+  <h2>Part 4. What people should know</h2>
+
+  <div class="qblock">
+    <label for="q-why">Why is this change being made?
+      <span class="hint">Give the reason the decision-makers themselves gave, in their words as best you can. You can disagree with it in the next box.</span>
+    </label>
+    <textarea id="q-why" data-save></textarea>
+  </div>
+  <div class="qblock">
+    <label for="q-debate">What do people disagree about?
+      <span class="hint">State the strongest version of each side. If you can only write one side well, you are not ready to publish yet.</span>
+    </label>
+    <textarea id="q-debate" data-save></textarea>
+  </div>
+  <div class="qblock">
+    <label for="q-who">Who is affected, and how?
+      <span class="hint">Be specific. Which students, families, staff, schools, or districts?</span>
+    </label>
+    <textarea id="q-who" data-save></textarea>
+  </div>
+  <div class="qblock">
+    <label for="q-when">When does it take effect?
+      <span class="hint">Include the date it was announced and the date it actually starts. Those are often far apart.</span>
+    </label>
+    <textarea id="q-when" data-save></textarea>
+  </div>
+  <div class="qblock">
+    <label for="q-unknown">What is still unknown?
+      <span class="hint">Pending court cases, bills not yet passed, rules not yet written, amounts not yet published. Do not skip this box.</span>
+    </label>
+    <textarea id="q-unknown" data-save></textarea>
+  </div>
+  <div class="qblock">
+    <label for="q-ask">Where can people ask questions about this change?
+      <span class="hint">Name the office, the person, the comment period, or the meeting — with a date if there is one.</span>
+    </label>
+    <textarea id="q-ask" data-save></textarea>
+  </div>
+  <div class="qblock">
+    <label for="q-sources">Full source list
+      <span class="hint">List every document, page, or announcement you used, with the date you looked at it. Dates matter — this material changes fast.</span>
+    </label>
+    <textarea id="q-sources" data-save style="min-height:130px"></textarea>
+  </div>
+
+  <!-- ============ HELP ============ -->
+  <h2>Help with the words</h2>
+
+  <details>
+    <summary>Plain-language glossary</summary>
+    <div class="inner">
+      <dl class="gloss">
+        <dt>Formula funding</dt>
+        <dd>Money handed out by a set math formula — usually based on things like how many students a place has. Nobody competes for it; the formula decides.</dd>
+
+        <dt>Categorical grant</dt>
+        <dd>Money that must be spent on one specific purpose. Narrow strings.</dd>
+
+        <dt>Block grant</dt>
+        <dd>Several funding streams combined into one pot with fewer required uses. The receiver gets more choice about how to spend it. Supporters call this flexibility; critics say it makes spending harder to track and compare.</dd>
+
+        <dt>Waiver</dt>
+        <dd>Official permission to skip a rule that would normally apply. Waivers are usually requested by a state and approved case by case, so two states can end up under different rules.</dd>
+
+        <dt>Transferability</dt>
+        <dd>Permission to move money from one program into another program. The total does not change; where it lands does.</dd>
+
+        <dt>Interagency agreement</dt>
+        <dd>A written deal in which one federal agency has another federal agency carry out some of its work. It moves the work sideways within the federal government. It does not, by itself, change what the law requires.</dd>
+
+        <dt>Statutory authority</dt>
+        <dd>Power that Congress wrote into law. An agency generally cannot hand it away on its own — changing it takes an act of Congress. This is why some changes are described as temporary or as administrative even when they feel permanent.</dd>
+
+        <dt>Self-managing, self-designing, self-governing</dt>
+        <dd>Names for how much authority a group holds, from the research this worksheet borrows from. Self-managing means you do the work and run it. Self-designing means you also shape the organization around it. Self-governing means you also set the goals. Each rung includes the ones below it.</dd>
+
+        <dt>Guardrails</dt>
+        <dd>The conditions, reporting rules, and protections attached to money. Ask who was protected by a guardrail before you decide whether removing it is a gain or a loss.</dd>
+      </dl>
+    </div>
+  </details>
+
+  <details>
+    <summary>A filled-in example</summary>
+    <div class="inner">
+      <p>Here is one real change, filled in the way this worksheet asks. It is a useful example precisely because it shows a <strong>sideways</strong> move that is easy to describe wrongly.</p>
+      <p><strong>The change:</strong> In June 2026, the U.S. Department of Education announced agreements to have other federal agencies help carry out special education program administration and education civil rights enforcement.</p>
+      <table style="min-width:0">
+        <tbody>
+          <tr><th scope="row" style="width:34%">A. Setting the overall direction</th><td>Before: Congress and the U.S. Dept. of Education → After: unchanged. <strong>No change.</strong> The underlying law was written by Congress, and an agreement between two agencies does not rewrite it.</td></tr>
+          <tr><th scope="row">B. Building the organization</th><td>Before: U.S. Dept. of Education → After: shared with a different federal agency. <strong>Moved sideways.</strong> This is the row that actually moved: which office is staffed and set up to run the work.</td></tr>
+          <tr><th scope="row">C. Running the work and checking it</th><td>Before: U.S. Dept. of Education → After: shared with a different federal agency for monitoring and compliance. <strong>Moved sideways.</strong></td></tr>
+          <tr><th scope="row">D. Doing the work</th><td>Grant processing and fund drawdowns → a different federal agency. <strong>Moved sideways.</strong></td></tr>
+          <tr><th scope="row">Dollars</th><td>Leave blank until you can cite a published figure. The agreements shift who administers funds; that is a different question from whether the amount changed.</td></tr>
+          <tr><th scope="row">Still unknown</th><td>Court cases were pending and separate bills had been introduced that would move authority permanently rather than administratively. Both could change the answer.</td></tr>
+        </tbody>
+      </table>
+      <p class="small muted">On the ladder, the states climbed no rungs at all here — every move was sideways between federal offices. Notice what the worksheet caught: nothing here moved to the states, even though this change is often discussed under the heading of returning education to the states. Some other changes in the same period — waivers and combined funding streams — <em>did</em> move choices to states. They are different changes and deserve separate rows.</p>
+      <p class="small muted">Verify the details and dates yourself before you publish anything based on this example. It is here to show the method, not to serve as your source.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Staying fair when you share this publicly</summary>
+    <div class="inner">
+      <ul>
+        <li><strong>Separate the facts from your reading of them.</strong> Parts 1 and 2 are for what is documented. Part 4 is where interpretation belongs.</li>
+        <li><strong>Date everything.</strong> Write the date you filled it in, right on the page. A worksheet from three months ago may describe a world that no longer exists.</li>
+        <li><strong>Say what you left out.</strong> If you only studied one program out of many, say so plainly at the top.</li>
+        <li><strong>Use neutral verbs.</strong> “Moved,” “changed,” “now handled by.” Save the stronger words for a place where you have clearly labeled them as your view.</li>
+        <li><strong>Invite correction.</strong> Publish a way for people to tell you that you got something wrong, and fix it visibly when they do.</li>
+      </ul>
+    </div>
+  </details>
+
+  <h2>Where the framework comes from</h2>
+
+  <p>The four decision areas in Part 1 are adapted from research on how authority gets divided inside organizations. In the original work the unit was a team inside a company, and the questions were about products and staffing. Here the unit is whoever runs a public service — a federal office, a state agency, a school district — and the questions are about programs, eligibility, and rules. The structure is theirs; the translation to public services, and any errors in it, are not.</p>
+
+  <p>Hackman set out four functions that must be filled whenever work gets done in an organization, and showed that a unit’s authority can be described by how many of them it holds. Moe and colleagues used those four areas as the backbone of a study of who actually decided what across two large organizations — which is the closest model for what this worksheet does. Kozlowski and Ilgen’s review places the work in the wider research on groups and teams.</p>
+
+  <ul class="refs">
+    <li>Hackman, J. R. (1986). The psychology of self-management in organizations. In M. S. Pallak &amp; R. O. Perloff (Eds.), <em>Psychology and work: Productivity, change, and employment</em> (pp. 89–136). American Psychological Association.</li>
+    <li>Kozlowski, S. W. J., &amp; Ilgen, D. R. (2006). Enhancing the effectiveness of work groups and teams. <em>Psychological Science in the Public Interest, 7</em>(3), 77–124. <a href="https://doi.org/10.1111/j.1529-1006.2006.00030.x" rel="noopener" target="_blank">https://doi.org/10.1111/j.1529-1006.2006.00030.x<span class="sr-only"> (opens in a new tab)</span></a></li>
+    <li>Moe, N. B., Šmite, D., Paasivaara, M., &amp; Lassenius, C. (2021). Finding the sweet spot for organizational control and team autonomy in large-scale agile software development. <em>Empirical Software Engineering, 26</em>(5), Article 101. <a href="https://doi.org/10.1007/s10664-021-09967-3" rel="noopener" target="_blank">https://doi.org/10.1007/s10664-021-09967-3<span class="sr-only"> (opens in a new tab)</span></a> (open access)</li>
+  </ul>
+
+  <p class="small muted">If you adapt this worksheet further, please keep this section. The framework is borrowed; the citation is how the borrowing stays honest.</p>
+
+  <div class="qblock" style="margin-top:26px">
+    <label for="meta-date">Date completed</label>
+    <input type="text" id="meta-date" data-save placeholder="Month Day, Year" style="max-width:280px">
+  </div>
+  <div class="qblock">
+    <label for="meta-by">Completed by</label>
+    <input type="text" id="meta-by" data-save placeholder="Name or organization" style="max-width:420px">
+  </div>
+
+</div>
+</main>
+
+<div class="floaters noprint">
+  <button type="button" id="btnSave"><span aria-hidden="true">💾</span><span class="lbl">Save</span></button>
+  <button type="button" id="btnPrint"><span aria-hidden="true">🖨️</span><span class="lbl">Print</span></button>
+  <button type="button" class="clear" id="btnClear"><span aria-hidden="true">🗑️</span><span class="lbl">Clear</span></button>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <h2 class="ftitle">About this worksheet</h2>
+
+    <p class="copy">Version and source</p>
+    <p><strong>Version 1.0 — July 2026.</strong> The current version of this worksheet lives at <a class="canon" href="https://transparencyovertropes.github.io/before-after-worksheet/">https://transparencyovertropes.github.io/before-after-worksheet/</a>, where a dated record of changes is kept.</p>
+    <p>If you are reading an adapted copy, that address will take you to the original, so you can compare the two. Adapting this worksheet is welcome and expected — changing the categories to fit your own situation is the point. This line exists so readers can trace any version back to its source, not to discourage anyone from making their own.</p>
+
+    <p class="copy">No rights reserved. This worksheet is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="license noopener" target="_blank">CC0 1.0 Universal<span class="sr-only"> (opens in a new tab)</span></a>.</p>
+    <p>You may copy it, change it, translate it, rename it, build on it, and share it, for any purpose, including commercially, without asking permission and without giving credit. If it is useful, pass it on.</p>
+
+    <p class="copy">Use of artificial intelligence</p>
+    <p>This open, web-based worksheet was developed with the help of two AI assistants. An initial worksheet structure was constructed using ChatGPT (OpenAI). It was then restructured and built as this web page with Claude (Anthropic). The human author set the purpose, made the editorial and design decisions, and is solely responsible for the final content.</p>
+
+    <p class="copy">Scope and limits</p>
+    <p>This worksheet is a neutral structure for describing change. It does not endorse or oppose any policy, and it is not legal, financial, or policy advice. Verify every figure against an official source before publishing.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var KEY = "transparency_worksheet_v1";
+  var live = document.getElementById("live");
+  function say(msg){ live.textContent = ""; setTimeout(function(){ live.textContent = msg; }, 60); }
+
+  var WHO = [
+    ["", "— choose one —", ""],
+    ["congress", "Congress (federal law)", "1"],
+    ["ed", "U.S. Department of Education", "2"],
+    ["otherfed", "A different federal agency", "2"],
+    ["state", "State government", "3"],
+    ["local", "School district (local)", "4"],
+    ["unclear", "Not yet decided or unclear", ""]
+  ];
+
+  var STRINGS = [
+    ["", "— choose one —"],
+    ["narrow", "One required purpose"],
+    ["some", "Some flexibility"],
+    ["flexible", "Flexible pot"],
+    ["unclear", "Not yet decided or unclear"]
+  ];
+
+  function opts(list){
+    return list.map(function(o){
+      return '<option value="' + o[0] + '"' + (o[2] !== undefined ? ' data-level="' + o[2] + '"' : '') + '>' + o[1] + '</option>';
+    }).join("");
+  }
+
+  var authSeed = [
+    ["A", "A. Setting the overall direction"],
+    ["B", "B. Building the organization and its supports"],
+    ["C", "C. Running the work and checking it"],
+    ["D", "D. Doing the work"]
+  ];
+
+  var authN = 0, fundN = 0;
+
+  function authRow(label, area){
+    authN++;
+    var i = authN;
+    var tr = document.createElement("tr");
+    if (area) tr.dataset.area = area;
+    tr.innerHTML =
+      '<td><label class="sr-only" for="a-area-'+i+'">Decision area, row '+i+'</label>' +
+        '<input type="text" id="a-area-'+i+'" data-save value="'+(label||"")+'" placeholder="Name the decision"></td>' +
+      '<td class="num"><label class="sr-only" for="a-w-'+i+'">Importance percent, row '+i+'</label>' +
+        '<input type="number" id="a-w-'+i+'" class="a-w" data-save min="0" max="100" step="1" inputmode="numeric" placeholder="0"></td>' +
+      '<td><label class="sr-only" for="a-b-'+i+'">Before, who decided, row '+i+'</label>' +
+        '<select id="a-b-'+i+'" class="a-b" data-save>'+opts(WHO)+'</select></td>' +
+      '<td><label class="sr-only" for="a-a-'+i+'">After, who decides, row '+i+'</label>' +
+        '<select id="a-a-'+i+'" class="a-a" data-save>'+opts(WHO)+'</select></td>' +
+      '<td><span class="auto flat a-out">—</span></td>' +
+      '<td><label class="sr-only" for="a-s-'+i+'">Source, row '+i+'</label>' +
+        '<input type="text" id="a-s-'+i+'" data-save placeholder="Document and date"></td>';
+    return tr;
+  }
+
+  function fundRow(){
+    fundN++;
+    var i = fundN;
+    var tr = document.createElement("tr");
+    tr.innerHTML =
+      '<td><label class="sr-only" for="f-area-'+i+'">Funding area, row '+i+'</label>' +
+        '<input type="text" id="f-area-'+i+'" data-save placeholder="Name the funding line"></td>' +
+      '<td class="num"><label class="sr-only" for="f-b-'+i+'">Before dollars, row '+i+'</label>' +
+        '<input type="number" id="f-b-'+i+'" class="f-b" data-save step="1" inputmode="numeric" placeholder="0"></td>' +
+      '<td class="num"><label class="sr-only" for="f-a-'+i+'">After dollars, row '+i+'</label>' +
+        '<input type="number" id="f-a-'+i+'" class="f-a" data-save step="1" inputmode="numeric" placeholder="0"></td>' +
+      '<td class="num"><span class="auto f-d">—</span></td>' +
+      '<td class="num"><span class="auto f-p">—</span></td>' +
+      '<td><label class="sr-only" for="f-sb-'+i+'">Strings before, row '+i+'</label>' +
+        '<select id="f-sb-'+i+'" data-save>'+opts(STRINGS)+'</select></td>' +
+      '<td><label class="sr-only" for="f-sa-'+i+'">Strings after, row '+i+'</label>' +
+        '<select id="f-sa-'+i+'" data-save>'+opts(STRINGS)+'</select></td>' +
+      '<td><label class="sr-only" for="f-s-'+i+'">Source, row '+i+'</label>' +
+        '<input type="text" id="f-s-'+i+'" data-save placeholder="Document and date"></td>';
+    return tr;
+  }
+
+  var authBody = document.getElementById("authbody");
+  var fundBody = document.getElementById("fundbody");
+
+  authSeed.forEach(function(l){ authBody.appendChild(authRow(l[1], l[0])); });
+  for (var k = 0; k < 4; k++) fundBody.appendChild(fundRow());
+
+  document.getElementById("addAuth").addEventListener("click", function(){
+    authBody.appendChild(authRow(""));
+    say("Decision area row added.");
+    recalc();
+  });
+  document.getElementById("addFund").addEventListener("click", function(){
+    fundBody.appendChild(fundRow());
+    say("Funding row added.");
+    recalc();
+  });
+
+  function money(n){
+    var sign = n < 0 ? "-" : "";
+    return sign + "$" + Math.abs(Math.round(n)).toLocaleString("en-US");
+  }
+
+  function recalc(){
+    // --- Part 1 ---
+    var wTotal = 0, down = 0, side = 0, up = 0, none = 0, unclear = 0;
+
+    Array.prototype.forEach.call(authBody.rows, function(tr){
+      var w = parseFloat(tr.querySelector(".a-w").value) || 0;
+      wTotal += w;
+
+      var bSel = tr.querySelector(".a-b"), aSel = tr.querySelector(".a-a");
+      var b = bSel.value, a = aSel.value;
+      var out = tr.querySelector(".a-out");
+      var text = "—";
+
+      if (!b || !a) {
+        text = "—";
+      } else if (b === "unclear" || a === "unclear") {
+        text = "Unclear"; unclear++;
+      } else if (b === a) {
+        text = "No change"; none++;
+      } else {
+        var bl = parseInt(bSel.selectedOptions[0].dataset.level, 10);
+        var al = parseInt(aSel.selectedOptions[0].dataset.level, 10);
+        if (al > bl) { text = "Moved toward states or local"; down++; }
+        else if (al < bl) { text = "Moved toward federal"; up++; }
+        else { text = "Sideways — still federal"; side++; }
+      }
+      out.textContent = text;
+    });
+
+    var wt = document.getElementById("authWeightTotal");
+    wt.textContent = Math.round(wTotal) + "%";
+    var note = document.getElementById("authWeightNote");
+    if (Math.round(wTotal) === 100) note.textContent = "Adds up to 100%.";
+    else if (wTotal === 0) note.textContent = "Aim for 100%.";
+    else note.textContent = "Aim for 100%. Currently " + Math.round(wTotal) + "%.";
+
+    document.getElementById("s-down").textContent = down;
+    document.getElementById("s-side").textContent = side;
+    document.getElementById("s-up").textContent = up;
+    document.getElementById("s-none").textContent = none;
+    document.getElementById("s-unclear").textContent = unclear;
+    ladder();
+
+    // --- Part 2 ---
+    var bTot = 0, aTot = 0, anyB = false, anyA = false;
+
+    Array.prototype.forEach.call(fundBody.rows, function(tr){
+      var bEl = tr.querySelector(".f-b"), aEl = tr.querySelector(".f-a");
+      var bv = bEl.value.trim(), av = aEl.value.trim();
+      var b = parseFloat(bv), a = parseFloat(av);
+      var dOut = tr.querySelector(".f-d"), pOut = tr.querySelector(".f-p");
+
+      if (bv !== "" && !isNaN(b)) { bTot += b; anyB = true; }
+      if (av !== "" && !isNaN(a)) { aTot += a; anyA = true; }
+
+      if (bv === "" || av === "" || isNaN(b) || isNaN(a)) {
+        dOut.textContent = "—"; pOut.textContent = "—";
+      } else {
+        dOut.textContent = money(a - b);
+        pOut.textContent = (b === 0) ? "n/a" : (((a - b) / Math.abs(b)) * 100).toFixed(1) + "%";
+      }
+    });
+
+    document.getElementById("fundBeforeTotal").textContent = anyB ? money(bTot) : "—";
+    document.getElementById("fundAfterTotal").textContent = anyA ? money(aTot) : "—";
+    var dTot = (anyB && anyA) ? (aTot - bTot) : null;
+    document.getElementById("fundDollarTotal").textContent = dTot === null ? "—" : money(dTot);
+    var pTot = (anyB && anyA && bTot !== 0) ? (((aTot - bTot) / Math.abs(bTot)) * 100).toFixed(1) + "%" : "—";
+    document.getElementById("fundPctTotal").textContent = pTot;
+
+    document.getElementById("s-dollars").textContent = dTot === null ? "—" : money(dTot);
+    document.getElementById("s-pct").textContent = pTot;
+  }
+
+  var RUNG = [
+    "Work is run from somewhere else",
+    "Carrying out only",
+    "Self-managing",
+    "Self-designing",
+    "Self-governing"
+  ];
+
+  function focalMatch(val, scope){
+    if (scope === "state")  return val === "state";
+    if (scope === "local")  return val === "local";
+    return val === "state" || val === "local";
+  }
+
+  // Returns {rung, mixed} or null if any of A-D is unanswered.
+  function rungFor(which, scope){
+    var order = ["D", "C", "B", "A"], held = [], complete = true;
+    order.forEach(function(code){
+      var tr = authBody.querySelector('tr[data-area="' + code + '"]');
+      if (!tr) { complete = false; held.push(false); return; }
+      var v = tr.querySelector(which).value;
+      if (!v) complete = false;
+      held.push(focalMatch(v, scope));
+    });
+    if (!complete) return null;
+    var r = 0;
+    while (r < 4 && held[r]) r++;
+    var mixed = held.slice(r).some(function(x){ return x; });
+    return { rung: r, mixed: mixed };
+  }
+
+  function ladder(){
+    var scope = document.getElementById("ladderFor").value;
+    var b = rungFor(".a-b", scope), a = rungFor(".a-a", scope);
+    var bEl = document.getElementById("ladderBefore");
+    var aEl = document.getElementById("ladderAfter");
+    var note = document.getElementById("ladderNote");
+
+    function label(x){ return x === null ? "—" : (x.mixed ? RUNG[x.rung] + " (does not stack neatly)" : RUNG[x.rung]); }
+    bEl.textContent = label(b);
+    aEl.textContent = label(a);
+
+    if (b === null || a === null) {
+      note.textContent = "Fill in the Before and After columns for rows A through D to see this.";
+      return;
+    }
+    if (b.mixed || a.mixed) {
+      note.textContent = "The answers do not stack neatly — authority over a higher job is held without one below it. That is worth explaining in your own words rather than reducing to a rung.";
+    } else if (a.rung > b.rung) {
+      note.textContent = "Climbed " + (a.rung - b.rung) + " rung" + (a.rung - b.rung === 1 ? "" : "s") + ". Say which jobs moved, not just how many.";
+    } else if (a.rung < b.rung) {
+      note.textContent = "Dropped " + (b.rung - a.rung) + " rung" + (b.rung - a.rung === 1 ? "" : "s") + ". Say which jobs moved, not just how many.";
+    } else {
+      note.textContent = "Same rung before and after. Authority may still have moved sideways — check the “What moved” column above.";
+    }
+  }
+
+  document.addEventListener("input", recalc);
+  document.addEventListener("change", recalc);
+
+  // FIX 1a: textareas grow with their content, so nothing is hidden below the fold
+  function grow(ta){
+    ta.style.height = "auto";
+    ta.style.height = (ta.scrollHeight + 2) + "px";
+  }
+  function growAll(){ document.querySelectorAll("textarea").forEach(grow); }
+  document.addEventListener("input", function(e){
+    if (e.target.tagName === "TEXTAREA") grow(e.target);
+  });
+
+  // FIX 1b: before printing, mirror every answer as plain text. Inputs and
+  // textareas clip on paper; a text node cannot. Empty fields keep their box
+  // so the sheet can still be filled in by hand.
+  function syncPrint(){
+    document.querySelectorAll("[data-save]").forEach(function(el){
+      var host = el.parentNode;
+      var val = (el.tagName === "SELECT")
+        ? (el.value ? el.selectedOptions[0].textContent : "")
+        : el.value;
+      var mirror = host.querySelector(":scope > .printval");
+      if (!mirror){
+        mirror = document.createElement("div");
+        mirror.className = "printval";
+        host.appendChild(mirror);
+      }
+      mirror.textContent = val;
+      host.classList.toggle("hasval", val.trim() !== "");
+    });
+  }
+  window.addEventListener("beforeprint", syncPrint);
+
+  // FIX 3: computed results are announced. A sighted user sees "Sideways —
+  // still federal" appear; without this a screen reader user is told nothing.
+  document.addEventListener("change", function(e){
+    var el = e.target, tr = el.closest ? el.closest("tr") : null;
+    if (!tr) return;
+    var name = tr.querySelector('input[type=text]');
+    name = (name && name.value.trim()) || "this row";
+    if (el.classList.contains("a-b") || el.classList.contains("a-a")){
+      var out = tr.querySelector(".a-out").textContent;
+      if (out !== "\u2014") say(name + ": " + out);   // stay quiet until both columns are set
+    } else if (el.classList.contains("f-b") || el.classList.contains("f-a")){
+      var dv = tr.querySelector(".f-d").textContent, pv = tr.querySelector(".f-p").textContent;
+      if (dv !== "—") say(name + ": change of " + dv + ", " + pv);
+    }
+  });
+
+  recalc();
+
+  // --- Save / load / clear (local only) ---
+  function collect(){
+    var data = { authRows: authBody.rows.length, fundRows: fundBody.rows.length, fields: {} };
+    document.querySelectorAll("[data-save]").forEach(function(el){
+      data.fields[el.id] = el.value;
+    });
+    return data;
+  }
+
+  function restore(){
+    var raw;
+    try { raw = localStorage.getItem(KEY); } catch (e) { return; }
+    if (!raw) return;
+    var data;
+    try { data = JSON.parse(raw); } catch (e) { return; }
+
+    while (authBody.rows.length < (data.authRows || 0)) authBody.appendChild(authRow(""));
+    while (fundBody.rows.length < (data.fundRows || 0)) fundBody.appendChild(fundRow());
+
+    Object.keys(data.fields || {}).forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) el.value = data.fields[id];
+    });
+    recalc();
+    growAll();
+  }
+
+  document.getElementById("btnSave").addEventListener("click", function(){
+    try {
+      localStorage.setItem(KEY, JSON.stringify(collect()));
+      say("Saved to this browser on this device.");
+    } catch (e) {
+      say("Could not save in this browser. Use Print to keep a copy instead.");
+      alert("This browser is blocking local saving, so your work was not stored.\n\nUse the Print button to save a copy as a PDF instead.");
+    }
+  });
+
+  document.getElementById("btnPrint").addEventListener("click", function(){
+    syncPrint();          // in case the browser does not fire beforeprint
+    window.print();
+  });
+
+  document.getElementById("btnClear").addEventListener("click", function(){
+    if (!confirm("Clear everything you have entered? This cannot be undone.")) return;
+    document.querySelectorAll("[data-save]").forEach(function(el){ el.value = ""; });
+    document.querySelectorAll(".printval").forEach(function(m){ m.textContent = ""; });
+    document.querySelectorAll(".hasval").forEach(function(h){ h.classList.remove("hasval"); });
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    authSeed.forEach(function(l, idx){
+      var r = authBody.rows[idx];
+      if (r) r.querySelector("input[type=text]").value = l[1];
+    });
+    recalc();
+    growAll();
+    say("Worksheet cleared.");
+  });
+
+  restore();
+})();
+</script>
+
+</body>
+</html>
